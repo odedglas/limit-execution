@@ -26,7 +26,7 @@
     "rootDirs": [
       "./src"
     ],
-    "outDir": "../dist"
+    "outDir": "./dist"
   },
   "ts-node": {
     "compilerOptions": {

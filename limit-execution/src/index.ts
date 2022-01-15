@@ -9,26 +9,42 @@ import ExecutionLimitError from './errors';
 const limitExecution = <T>(promise: Promise<T>, limit?: number, onCancel?: () => void): Promise<T> => {
     let timer: NodeJS.Timeout;
 
+    if (!(promise instanceof Promise)) {
+        throw new Error(`Cannot limit none promise, instead got: ${typeof promise}`);
+    }
+
     if (!limit) {
         return promise;
     }
 
-    const rejectAfter = (): Promise<T> => new Promise((_resolve, reject) => (
+    // Creates the error at upper scope so trace would be useful.
+    const executionLimitError = new ExecutionLimitError(limit);
+
+    const rejectAfter = (): Promise<T> => new Promise((_resolve, reject) => {
         timer = setTimeout(
             () => {
                 onCancel?.();
-                reject(new ExecutionLimitError(limit))
+                reject(executionLimitError)
             },
             limit
-        )));
+        );
+
+        timer.unref?.()
+    });
+
+    const clean = () => timer && clearTimeout(timer);
 
     return Promise.race([
         promise,
         rejectAfter()
     ]).then((result: T) => {
-        timer && clearTimeout(timer);
+        clean();
 
         return result;
+    }).catch((error: unknown) => {
+        clean();
+
+        throw error;
     });
 };
 

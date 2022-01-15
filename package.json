@@ -6,9 +6,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint .",
-    "build": "tsc -b",
-    "prepublish": "npm run build"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",

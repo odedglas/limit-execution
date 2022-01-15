@@ -7,7 +7,6 @@
   "repository": "git@github.com:odedglas/limit-execution.git",
   "scripts": {
     "test": "jest",
-    "lint": "eslint .",
     "build": "tsc -b",
     "prepublish": "npm run build"
   },
