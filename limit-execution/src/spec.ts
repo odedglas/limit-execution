@@ -1,4 +1,4 @@
-import { limitExecution, ExecutionLimitError } from '.';
+import { limitExecution, ExecutionLimitError } from './index';
 
 describe('limitExecution', () => {
     it('Resolves with given promise result when settled before limit', async() => {
