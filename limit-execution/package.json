@@ -1,7 +1,7 @@
 {
   "name": "limit-execution",
   "version": "1.0.0",
-  "description": "Limits a given function execution time providing a cancel callback.",
+  "description": "Limits a given promise execution time triggering cancel callback if reached.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git@github.com:odedglas/limit-execution.git",

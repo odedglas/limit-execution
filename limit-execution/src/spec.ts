@@ -3,6 +3,13 @@ import { limitExecution, ExecutionLimitError } from './index';
 describe('limitExecution', () => {
     afterEach(jest.clearAllMocks);
 
+    it('Throws if given function is not a promise', () => {
+        const dummy = () => false;
+
+        expect(() => limitExecution(dummy as unknown as Promise<unknown>))
+            .toThrowError();
+    });
+
     it('Resolves with given promise result when settled before limit', async() => {
         await expect(
             limitExecution(Promise.resolve(true), 10)
