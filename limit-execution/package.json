@@ -1,6 +1,6 @@
 {
   "name": "limit-execution",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Limits a given promise execution time triggering cancel callback if reached.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

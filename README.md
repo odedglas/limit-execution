@@ -66,7 +66,7 @@ const limitAxiosCall = async() => {
         axios.get('https://jsonapi.org/examples/', {
             signal: controller.signal
         }),
-        450,
+        500,
         () => controller.abort()
     );
 
