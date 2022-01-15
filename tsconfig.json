@@ -1,0 +1,36 @@
+{
+  "exclude": [
+    "/**/*spec.ts*"
+  ],
+  "include": [
+    "./src",
+  ],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES2020"],
+    "module": "commonjs",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES5",
+    "rootDirs": [
+      "./src"
+    ],
+    "outDir": "./dist"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "rootDir": "."
+    }
+  }
+}
