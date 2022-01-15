@@ -5,8 +5,10 @@
     "examples"
   ],
   "scripts": {
-    "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "cd limit-execution && jest",
+    "build": "cd limit-execution && npm run build",
+    "publish": "cd limit-execution && npm publish"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",

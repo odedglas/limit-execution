@@ -1,12 +1,6 @@
 import { limitExecution, ExecutionLimitError } from './index';
 
 describe('limitExecution', () => {
-    let clearTimeoutSpy: jest.SpyInstance;
-
-    beforeEach(() => {
-        clearTimeoutSpy = jest.spyOn(global, 'clearTimeout');
-    });
-
     afterEach(jest.clearAllMocks);
 
     it('Resolves with given promise result when settled before limit', async() => {
@@ -21,14 +15,6 @@ describe('limitExecution', () => {
         await expect(
             limitExecution(Promise.reject(error), 10)
         ).rejects.toThrowError(error);
-    });
-
-    it.only('Clears timeout once promise settled', async() => {
-        await expect(
-            limitExecution(Promise.resolve(true), 10)
-        );
-
-        expect(clearTimeoutSpy).toHaveBeenCalledTimes(1);
     });
 
     it('Throws ExecutionLimitError once limit breached', async() => {

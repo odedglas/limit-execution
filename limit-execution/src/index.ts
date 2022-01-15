@@ -24,7 +24,7 @@ const limitExecution = <T>(promise: Promise<T>, limit?: number, onCancel?: () =>
         timer = setTimeout(
             () => {
                 onCancel?.();
-                reject(executionLimitError)
+                reject(executionLimitError);
             },
             limit
         );
